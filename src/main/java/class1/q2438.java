@@ -9,7 +9,7 @@ public class q2438 {
 
         int line = sc.nextInt();
 
-        for(int i=1; i<-line; i++){
+        for(int i=1; i<=line; i++){
             for(int j = 1; j<=i; j++){
                 System.out.print("*");
             }
