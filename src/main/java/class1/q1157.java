@@ -1,5 +1,6 @@
 package class1;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class q1157 {
 
@@ -11,45 +12,24 @@ public class q1157 {
 
         int[] arr = new int[26];
 
-//        char a = 0;
-//        int maxCount = 0;
-//        int count = 0;
-//        int len = words.length();
-//
-//        if(len == 1){
-//            System.out.println(words);
-//        }else{
-//            for(int i=0; i<len; i++){
-//                count = 0;
-//                for(int j=i+1; j<len; j++){
-//                    if(words.charAt(i) == words.charAt(j)){
-//                        count++;
-//                        if(count > maxCount){
-//                            maxCount = count;
-//                            a = words.charAt(j);
-//                        }else if(count == maxCount){
-//                            a = '?';
-//                        }
-//                    }
-//                }
-//
-//
-//            }
-//            System.out.println(arr);
-//        }
+        for(int i=0; i<words.length(); i++){
+            arr[words.charAt(i)-'A']++;
+        }
 
         int max = -1;
         char ch = '?';
 
-        for(int i=0; i<words.length(); i++){
-            arr[words.charAt(i)]++;
+        for(int i=0; i<arr.length; i++){
+            if(arr[i] > max){
+                max = arr[i];
+                ch = (char) (i+'A');
+            }
+            else if(arr[i] == max) {
+                ch = '?';
+            }
         }
 
-        for(int i=0;i<=arr.length; i++){
-
-
-        }
-
+        System.out.println(ch);
 
     }
 
