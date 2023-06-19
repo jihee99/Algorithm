@@ -21,3 +21,5 @@ public class q1152 {
 //        System.out.println(arr.length);
     }
 }
+
+
