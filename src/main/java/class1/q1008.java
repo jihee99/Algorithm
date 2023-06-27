@@ -10,7 +10,7 @@
 
 package class1;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class q1008 {
 

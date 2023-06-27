@@ -4,7 +4,7 @@
 
 package class1;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class q1000 {
     public static void main(String[] args){

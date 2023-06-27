@@ -1,6 +1,6 @@
 package class1;
-import java.util.*;
-import java.util.regex.Pattern;
+
+import java.util.Scanner;
 
 public class q1157 {
 

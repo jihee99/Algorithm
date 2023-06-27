@@ -1,7 +1,7 @@
 package class1;
 
 import java.io.*;
-import java.util.stream.*;
+import java.util.stream.Stream;
 
 
 public class q2577 {
