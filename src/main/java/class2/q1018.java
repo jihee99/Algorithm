@@ -4,6 +4,8 @@ import java.io.*;
 
 public class q1018 {
 
+    public static boolean[][] arr;
+
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -13,9 +15,8 @@ public class q1018 {
 
 
         // m, n 크기를 잘라서 8*8 크기의 체스판으로 만ㄷㅁ
+        arr = new boolean[N][M];
 
-        boolean[][] arr = new boolean[N][M];
-//        String[][] arr = new String[r][c];
         for(int i=0; i<N; i++){
             String[] s = br.readLine().split("");
             for(int j=0; j<M; j++){
@@ -32,13 +33,22 @@ public class q1018 {
 
         for(int i=0; i<N_row; i++){
             for(int j=0; j<M_col; i++){
-
-                int NN =;
-                int MM;
-
+                check(i,j);
             }
         }
 
+    }
+
+    static void check(int x, int y){
+        int end_x = x+8;
+        int end_y = y+8;
+
+
+        for(int i=0; i<end_x; i++){
+            for (int j = y; j < end_y; j++) {
+
+            }
+        }
     }
 }
 
