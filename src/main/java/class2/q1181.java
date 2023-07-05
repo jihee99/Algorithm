@@ -53,5 +53,7 @@ public class q1181 {
         for (String s : list) {
             System.out.println(s);
         }
+
+
     }
 }
