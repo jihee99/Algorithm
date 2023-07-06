@@ -11,20 +11,20 @@ public class q1546 {
         int N = Integer.parseInt(br.readLine());
 
         int[] arr = new int[N];
+        int max = -1;
 
-        double max = -1;
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
         for(int i=0; i<N; i++){
             arr[i] = Integer.parseInt(st.nextToken());
             if(max<arr[i]) max = arr[i];
         }
 
         double result =0;
-        for (int j : arr) {
-            result += j / max * 100;
+        for (double n : arr) {
+//            result += n / max * 100;
+            result += n;
         }
-        bw.write(String.valueOf(result /  N ));
+        bw.write(String.valueOf((result/ max * 100) /  N ));
         bw.flush();
         bw.close();
     }
