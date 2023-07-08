@@ -21,18 +21,12 @@ public class q1654_ {
             arr[i] = Long.parseLong(br.readLine());
             max = Math.max(max, arr[i]);
         }
-        Arrays.sort(arr);
-        for(long i : arr){
-            System.out.println(i);
-        }
-
 
         long result = searchBinary(arr, max, N);
 
-        System.out.println(result);
-        // 최대길이의 랜선을 찾는 함수 호출
-        // 전달 인자 : arr, max
-
+        bw.write(String.valueOf(result));
+        bw.flush();
+        bw.close();
 
     }
 
@@ -46,17 +40,9 @@ public class q1654_ {
             half = (min + max) / 2;
             int count = 0;
 
-            System.out.println("------------");
-            System.out.println(half);
-            int sum = 0;
-
-
             for(long i : arr){
                 count += i/half;
-                System.out.println(count);
             }
-
-            System.out.println("   ");
 
             // 원하는 랜선 갯수 보다 잘라진 랜선 수가 적을경우
             // 하나의 랜선 길이가 길어서 길이를 더 짧게 만들어야 함
