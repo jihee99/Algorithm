@@ -37,10 +37,16 @@ public class q1676 {
 //        bw.write(String.valueOf(cnt));
 //        bw.flush();
 //        bw.close();
-
-
-
-
-
+        int cnt = 0;
+        for(int i=1; i<= N; i++){
+            int num = i;
+            while(num%5==0){
+                cnt++;
+                num /= 5;
+            }
+        }
+        bw.write(String.valueOf(cnt));
+        bw.flush();
+        bw.close();
     }
 }
