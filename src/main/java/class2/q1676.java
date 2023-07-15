@@ -42,7 +42,5 @@ public class q1676 {
 
 
 
-
-
     }
 }
