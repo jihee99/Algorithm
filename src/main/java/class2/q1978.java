@@ -3,7 +3,7 @@ package class2;
 import java.io.*;
 import java.util.*;
 
-public class q1987 {
+public class q1978 {
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
