@@ -44,6 +44,9 @@ public class q1940 {
 //                end++;
 //            }
 //            else if(sum < M){
+
+
+
 //                sum = sum + arr[end];
 //                end++;
 //            }
