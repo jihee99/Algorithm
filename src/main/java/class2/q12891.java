@@ -10,7 +10,6 @@ package class2;
 // ->2
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class q12891 {
@@ -24,10 +23,10 @@ public class q12891 {
         int S = Integer.parseInt(st.nextToken());
         int P = Integer.parseInt(st.nextToken());
 
-        String dna = br.readLine();
+        String[] str = br.readLine().split("");
 
         char[] chkDna = new char[S];
-        int[] A = new int[4];
+        int[] chkRule = new int[91];
 
 
         int count = 0;
@@ -35,33 +34,20 @@ public class q12891 {
         st = new StringTokenizer(br.readLine());
 
         for(int i=0; i<4; i++){
-            A[i] = Integer.parseInt(st.nextToken());
+            chkRule[i] = Integer.parseInt(st.nextToken());
         }
 
-        for(int i=0; i<S-P+1; i++){
-            int[] chkArr = new int[4];
-            int end = i+P;
-            String chkStr = dna.substring(i, end);
 
+        for(int i=0; i<S-P+1; i++){
+            int[] chkArr = new int[91];
+            int end = i+P;
+            // 투포인터?
             for(int j=0; j<chkStr.length(); j++){
                 char ch = chkStr.charAt(j);
-                switch (ch){
-                    case 'A':
-                        chkArr[0]++;
-                        break;
-                    case 'C':
-                        chkArr[1]++;
-                        break;
-                    case 'G':
-                        chkArr[2]++;
-                        break;
-                    case 'T':
-                        chkArr[3]++;
-                        break;
-                }
+                chkArr[ch]++;
             }
 
-            if(pwdValidChk(A, chkArr)){
+            if(pwdValidChk(chkRule, chkArr)){
                 count++;
             }
 
@@ -73,10 +59,10 @@ public class q12891 {
         bw.close();
     }
 
-    public static boolean pwdValidChk(int[] A, int[] my){
+    public static boolean pwdValidChk(int[] rules, int[] my){
         boolean pwdChk = false;
-        for(int i=0; i<4; i++){
-            if(A[i]==my[i]) pwdChk = true;
+        for(int i=0; i<rules.length; i++){
+            if(rules[i]==my[i]) pwdChk = true;
             else pwdChk = false;
         }
         return pwdChk;
