@@ -26,11 +26,8 @@ public class q1874 {
 
         int[] arr = new int[N];
 
-        //배열의 인덱스 값을 담당할 변수
         int index = 0;
-        //1~n까지의 현재 값을 담당할 변수
         int num = 1;
-
 
         StringBuilder sb = new StringBuilder();
 
