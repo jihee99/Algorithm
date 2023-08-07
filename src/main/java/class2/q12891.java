@@ -26,8 +26,8 @@ public class q12891 {
         String[] str = br.readLine().split("");
 
         char[] chkDna = new char[S];
-        int[] chkRule = new int[91];
-
+        int[] chkRule = new int[4];
+        int[] alpha = new int[26];
 
         int count = 0;
 
@@ -37,22 +37,26 @@ public class q12891 {
             chkRule[i] = Integer.parseInt(st.nextToken());
         }
 
-
-        for(int i=0; i<S-P+1; i++){
-            int[] chkArr = new int[91];
-            int end = i+P;
-            // 투포인터?
-            for(int j=0; j<chkStr.length(); j++){
-                char ch = chkStr.charAt(j);
-                chkArr[ch]++;
-            }
-
-            if(pwdValidChk(chkRule, chkArr)){
-                count++;
-            }
-
-//            System.out.println(chkStr);
+        for(int i=0; i<P; i++){
+            int ascii = Integer.parseInt(str[i]);
+            int alphabet = ascii - 65;
+            alpha[alphabet]++;
         }
+
+
+        int result = 0;
+        int index = -1;
+        while(P+index < str.length){
+            index++;
+            if(alpha[0] >= chkRule[0] && alpha[2] >= chkRule[1] && alpha[6] >= chkRule[2] && alpha[19] >= chkRule[3]) {
+                result++;
+            }
+//            if(chkRule[0] >= checkCnt[0] && alpha[2] >= checkCnt[1] && alpha[6] >= checkCnt[2] && alpha[19] >= checkCnt[3]) {
+//                answer++;
+//            }
+
+        }
+
 
         bw.write(String.valueOf(count));
         bw.flush();
