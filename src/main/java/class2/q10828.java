@@ -12,7 +12,10 @@ import java.util.StringTokenizer;
 
 public class q10828 {
 
-    public static Stack<Integer> stack = new Stack<>();
+//    public static Stack<Integer> stack = new Stack<>();
+
+    public static int[] stack;
+    public static int size = 0;
 
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,48 +24,110 @@ public class q10828 {
         int N = Integer.parseInt(br.readLine());
 
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
+        stack = new int[N];
+
         for(int i=0; i<N; i++){
             st = new StringTokenizer(br.readLine());
-
             String order = st.nextToken();
-
             if(order.equals("push")){
-                int num = Integer.parseInt(st.nextToken());
-                stack.push(num);
+                push(Integer.parseInt(st.nextToken()));
             }
-            else if(order.equals("pop")){
-                if(!stack.empty()) {
-                    bw.write(String.valueOf(stack.pop()));
-                }else{
-                    bw.write("-1");
-                }
-                bw.newLine();
+            if(order.equals("pop")){
+                sb.append(pop()).append('\n');
             }
-            else if(order.equals("size")){
-                bw.write(String.valueOf(stack.size()));
-                bw.newLine();
+            if(order.equals("size")) {
+                sb.append(size()).append('\n');
             }
-            else if(order.equals("empty")){
-                if(!stack.empty()) {
-                    bw.write("0");
-                }else{
-                    bw.write("1");
-                }
-                bw.newLine();
+            if(order.equals("empty")){
+                sb.append(empty()).append('\n');
             }
-            else if(order.equals("top")){
-                if(!stack.empty()) {
-                    bw.write(String.valueOf(stack.peek()));
-                }else{
-                    bw.write("-1");
-                }
-                bw.newLine();
+            if(order.equals("top")){
+                sb.append(top()).append('\n');
             }
-
         }
+//        for(int i=0; i<N; i++){
+//            st = new StringTokenizer(br.readLine());
+//
+//            String order = st.nextToken();
+//
+//            if(order.equals("push")){
+//                int num = Integer.parseInt(st.nextToken());
+//                stack.push(num);
+//            }
+//            else if(order.equals("pop")){
+//                if(!stack.empty()) {
+//                    bw.write(String.valueOf(stack.pop()));
+//                }else{
+//                    bw.write("-1");
+//                }
+//                bw.newLine();
+//            }
+//            else if(order.equals("size")){
+//                bw.write(String.valueOf(stack.size()));
+//                bw.newLine();
+//            }
+//            else if(order.equals("empty")){
+//                if(!stack.empty()) {
+//                    bw.write("0");
+//                }else{
+//                    bw.write("1");
+//                }
+//                bw.newLine();
+//            }
+//            else if(order.equals("top")){
+//                if(!stack.empty()) {
+//                    bw.write(String.valueOf(stack.peek()));
+//                }else{
+//                    bw.write("-1");
+//                }
+//                bw.newLine();
+//            }
+//
+//        }
 
+        bw.write(String.valueOf(sb));
         bw.flush();
         bw.close();
     }
+
+    public static void push(int num){
+        stack[size] = num;
+        size++;
+    }
+
+    public static int pop(){
+        if(size == 0){
+            return -1;
+        }else{
+            int res = stack[size - 1];
+            stack[size - 1] = 0;
+            size--;
+            return res;
+        }
+    }
+
+    public static int size(){
+        return size;
+    }
+
+    public static int empty(){
+        if(size == 0) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public static int top(){
+        if(size == 0) {
+            return -1;
+        }
+        else {
+            return stack[size - 1];
+        }
+    }
+
 
 }
