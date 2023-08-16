@@ -6,8 +6,9 @@ import java.util.StringTokenizer;
 public class q10845 {
 
     public static int[] queue;
-    public static int size;
-
+    public static int size = 0;
+//    public static int front = 0; // pop 할 위치
+    public static int rear = -1;  // push 할 위치
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -15,11 +16,12 @@ public class q10845 {
 
         int count = Integer.parseInt(br.readLine());
         queue = new int[count];
-        StringBuilder sb = new StringBuilder();
-        StringTokenizer st;
 
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
         for(int i=0; i<count; i++){
             st = new StringTokenizer(br.readLine());
+
             String order = st.nextToken();
             if(order.equals("push")){
                 push(Integer.parseInt(st.nextToken()));
@@ -40,40 +42,53 @@ public class q10845 {
                 sb.append(back()).append('\n');
             }
         }
+
+        bw.write(String.valueOf(sb));
+        bw.flush();
+        bw.close();
+
     }
 
     public static void push(int num){
-        queue[size] = num;
-        size++;
+        rear++;
+        queue[rear] = num;
     }
 
     public static int pop(){
-        if(size==0) return -1;
+        if(rear < 0) return -1;
         else{
             int result = queue[0];
             int tmp;
-            for(int j = 1; j <= size; j++) {
-                tmp = queue[j];
-                queue[j - 1] = tmp;
-                queue[j] = 0;
+            for(int j = 0; j < rear; j++) {
+//                tmp = queue[j];
+//                queue[j - 1] = tmp;
+//                queue[j] = 0;
+                queue[j]=queue[j+1];
             }
+            rear--;
             return result;
         }
     }
 
     public static int size(){
-        return 0;
+        if(rear<0) return 0;
+        return rear+1;
     }
 
     public static int empty(){
-        return 0;
+        if(rear == -1) return 1;
+        else return 0;
     }
 
     public static int front(){
-        return 0;
+        if(empty() == 1) {
+            return -1;
+        } else return queue[0];
     }
 
     public static int back(){
-        return 0;
+        if(empty() == 1 || rear == -1) {
+            return -1;
+        } else return queue[rear];
     }
 }
