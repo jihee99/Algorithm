@@ -7,6 +7,7 @@ import java.io.*;
 
 public class q1517 {
 
+    public static int[] result;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -21,6 +22,27 @@ public class q1517 {
         bw.write(swap(arr));
         bw.flush();
         bw.close();
+    }
+
+    public static int mergeSort(int[] arr, int left, int right){
+
+
+        if(left < right){
+            int mid = (left+right)/2;
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid+1, right);
+
+
+        }
+
+
+
+        if( start== end){
+            return 0;
+        }
+
+        return 0;
+
     }
 
     public static int swap(int[] arr){
