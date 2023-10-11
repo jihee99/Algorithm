@@ -4,15 +4,6 @@ import java.io.*;
 import java.util.PriorityQueue;
 
 public class q1715 {
-    //int result = 0;
-    //for(N만큼 반복){
-    //	두 개씩 뽑아 필요한 비교 수 구하기
-    //	result에 비교 수 저장
-    //	구한 합을 다시 pq에 넣기
-    //}
-    //
-    //result 출력
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,6 +15,19 @@ public class q1715 {
         for(int i=0; i<N; i++){
             pq.add(Integer.valueOf(br.readLine()));
         }
+
+        int num1, num2;
+        int sum=0;
+        while(pq.size() != 1){
+            num1 = pq.remove();
+            num2 = pq.remove();
+            sum += num1 + num2;
+            pq.add(num1+num2);
+        }
+
+        bw.write(String.valueOf(sum));
+        bw.flush();
+        bw.close();
     }
 
 }
