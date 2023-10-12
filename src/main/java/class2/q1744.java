@@ -20,7 +20,7 @@ public class q1744 {
 		for(int i=0; i<N; i++){
 			int current = Integer.parseInt(br.readLine());
 
-			if(current < 1) plusPriorityQueue.add(current);
+			if(current > 1) plusPriorityQueue.add(current);
 			else if(current == 1) onePriorityQueue.add(current);
 			else if(current == 0) zeroPriorityQueue.add(current);
 			else minusPriorityQueue.add(current);
