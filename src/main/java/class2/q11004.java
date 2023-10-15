@@ -9,10 +9,10 @@ public class q11004 {
 
     public static int partition(int[] arr, int start, int end){
 
-        if(start + 1 == end){
-            if(arr[start] > arr[end]) swap(arr, start, end);
-        }
-
+//        if(start + 1 == end){
+//            if(arr[start] > arr[end]) swap(arr, start, end);
+//        }
+//
 
 
         return 0;
@@ -32,7 +32,7 @@ public class q11004 {
         // }
     }
 
-    public static void swap(int[] arr,int left, int right){
-        int
-    }
+//    public static void swap(int[] arr,int left, int right){
+//        int
+//    }
 }

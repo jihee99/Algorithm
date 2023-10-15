@@ -37,9 +37,9 @@ public class q1517 {
 
 
 
-        if( start== end){
-            return 0;
-        }
+//        if( start== end){
+//            return 0;
+//        }
 
         return 0;
 

@@ -54,5 +54,6 @@ public class q1744 {
 		bw.write(String.valueOf(sum));
 		bw.flush();
 		bw.close();
+
 	}
 }
