@@ -26,20 +26,15 @@ public class q1517 {
 
     public static int mergeSort(int[] arr, int left, int right){
 
-
         if(left < right){
             int mid = (left+right)/2;
             mergeSort(arr, left, mid);
             mergeSort(arr, mid+1, right);
 
-
         }
 
 
 
-//        if( start== end){
-//            return 0;
-//        }
 
         return 0;
 
