@@ -1,0 +1,115 @@
+# [BOJ/백준] 1018번 체스판 다시 칠하기
+
+### 문제
+지민이는 자신의 저택에서 MN개의 단위 정사각형으로 나누어져 있는 M×N 크기의 보드를 찾았다. 어떤 정사각형은 검은색으로 칠해져 있고, 나머지는 흰색으로 칠해져 있다. 지민이는 이 보드를 잘라서 8×8 크기의 체스판으로 만들려고 한다.
+
+체스판은 검은색과 흰색이 번갈아서 칠해져 있어야 한다. 구체적으로, 각 칸이 검은색과 흰색 중 하나로 색칠되어 있고, 변을 공유하는 두 개의 사각형은 다른 색으로 칠해져 있어야 한다. 따라서 이 정의를 따르면 체스판을 색칠하는 경우는 두 가지뿐이다. 하나는 맨 왼쪽 위 칸이 흰색인 경우, 하나는 검은색인 경우이다.
+
+보드가 체스판처럼 칠해져 있다는 보장이 없어서, 지민이는 8×8 크기의 체스판으로 잘라낸 후에 몇 개의 정사각형을 다시 칠해야겠다고 생각했다. 당연히 8*8 크기는 아무데서나 골라도 된다. 지민이가 다시 칠해야 하는 정사각형의 최소 개수를 구하는 프로그램을 작성하시오.
+
+### 입력
+첫째 줄에 N과 M이 주어진다. N과 M은 8보다 크거나 같고, 50보다 작거나 같은 자연수이다. 둘째 줄부터 N개의 줄에는 보드의 각 행의 상태가 주어진다. B는 검은색이며, W는 흰색이다.
+
+### 출력
+첫째 줄에 지민이가 다시 칠해야 하는 정사각형 개수의 최솟값을 출력한다.
+
+<br/>
+
+## 문제분석
+
+브루트포스 알고리즘을 활용해 문제를 풀어야 한다. 브루트포스 알고리즘이란 모든 경우의 수를 탐색하는 것을 의미한다. 
+
+방법1. for, while 의 반복문을 사용
+
+방법2. 재귀함수 사용 
+
+<br/>
+
+예를 들어 보드가 9*9라면 각 (0,0) (0,1) (1,0) (1,1) 의 네 군데에서 시작하는 체스판 4개가 만들어진다.
+
+<br/>
+
+보드가 10*9라면 (0,0) (0,1) (1,0) (1,1) (2,0) (2,1) 의 지점에서 시작하는 체스판 6개가 만들어진다.
+
+<br/>
+
+즉, (N-7)(M-7)개의 체스판을 가질 수 있다.
+
+<br/>
+
+그리고 시작점이 B / W인지에 따라 올바르게 칠해진 체스판이 결정되기 때문에 
+
+최종적인 경우의 수는 ***2 × (가로 칸 개수 - 7) × (세로 칸 개수 - 7)*** 가 된다.
+
+<br/>
+
+2차원 배열을 이용해 W와 B를 구별하고 흰색은 true, 검은색은 false로 표현한다.
+
+그리고 8*8 배열을 하나씩 검사하며 첫 칸의 색이 흰색인 경우와 검은색인 경우의 수를 비교해 칠한 개수의 최소값을 구한다.
+
+
+## 실전코드
+
+```java
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static int min = 64;
+    public static boolean[][] arr;
+
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        // m, n 크기를 잘라서 8*8 크기의 체스판으로 
+        arr = new boolean[N][M];
+
+        for(int i=0; i<N; i++){
+            String str = br.readLine();
+            for(int j=0; j<M; j++){
+                if(str.charAt(j) == 'W') {
+                    // white 일 경우  -> true
+                    arr[i][j] = true;
+                } else {
+                    arr[i][j] = false;
+                }
+            }
+        }
+
+        int N_row = N - 7;
+        int M_col = M - 7;
+
+        for(int i=0; i<N_row; i++){
+            for(int j=0; j<M_col; j++){
+                check(i,j);
+            }
+        }
+        System.out.println(min);
+    }
+
+    static void check(int x, int y){
+        int end_x = x+8;
+        int end_y = y+8;
+        int count = 0;
+
+        boolean check = arr[x][y];
+
+        for(int i=x; i<end_x; i++){
+            for (int j = y; j < end_y; j++) {
+                if(arr[i][j] != check) {
+                    count++;
+                }
+                check = !check;
+            }
+            check = !check;
+        }
+        count = Math.min(count, 64-count);
+        min = Math.min(min, count);
+    }
+}
+```
